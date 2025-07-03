@@ -13,27 +13,16 @@ Você vai precisar adquirir os seguintes materiais (alguns deles talvez você j�
 
 
 | Nome do item                       | Pra que serve?                            | Quantidade |
-
 | ---------------------------------- | ----------------------------------------- | ---------- |
-
 | Microcontrolador ESP32             | É o "cérebro" do sistema                  | 1          |
-
 | Laser 5V (vermelhinho)             | Cria os feixes de luz                     | 3          |
-
 | Sensor LDR (com Potenciômetro)     | Detecta se a luz do laser está passando   | 3          |
-
 | *Buzzer* passivo                   | Emite o som do alarme                     | 1          |
-
 | Protoboard (840 pontos)            | Tabuleiro onde conectamos os fios         | 1          |
-
 | Cabos CAT5e ou outro (0,5 a 0,6 mm)| Para fazer as ligações                    | a definir  |
-
 | Fonte 5V ou cabo USB               | Para ligar tudo                           | 1          |
-
 | Tubinhos PVC ou canudos opacos     | Para proteger os sensores da luz ambiente | 3          |
-
 | Celular com Telegram               | Para receber os avisos                    | 1          |
-
 | Notebook/PC com internet           | Para configurar tudo (apenas uma vez)     | 1          |
 
 💡**OBSERVAÇÃO**: será necessário ter um ferro de solda ou adquirir conectores "Modu".
@@ -41,7 +30,7 @@ Você vai precisar adquirir os seguintes materiais (alguns deles talvez você j�
 **Passos para a Instalação do Sistema de Alarme (incluindo medição de cabos CAT5e para aquisição e upload de código pela IDE no Microcontrolador ESP32)**
 
 
-1. Baixar o Arduino IDE do site oficial (siga intuitivamente). Após baixá-lo, execute-o. Aparecerá uma janela, na qual você deverá seguir este caminho: file/arquivo (Português)-> Preferences; uma nova janela se abrirá; nela você deve clicar em "Additional boards manager URLs:", o que fará com que se abra um espaço para você preencher; neste espaço, você colará o seguinte link: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package\_esp32\_index.json💡**OBSERVAÇÃO**: caso já exista algo escrito neste espaço, coloque uma vírgula ao seu final e cole logo após esta vírgula o link aqui mencionado; em seguida, click em OK. Na janela que permanecerá aberta, no Menu ao alto você clicará em "Tools", logo em seguida em Board, e em seguida Boards Manager; abrirá um Menu lateral, à esquerda, no qual você deverá usar o campo de busca digitando "ESP32"; vão aparecer alguns itens e você deverá clique em "Install" no pacote chamado "esp32 by Espressif Systems". Aguarde a instalação. Uma vez instalado o programa, volte em "Tools", vá em Board e localize o item ESP32, passando o mouse por cima, de modo que aparecerão inúmeros modelos. Identifique o seu e clique em cima, para selecioná-la e preparar o IDE para que o upload do código seja devidamente realizado em sua ESP32.💡**OBSERVAÇÃO**: se você não identificar o seu modelo, saiba que a maioria das ESP32 funciona com "ESP32 Dev Module", clique em cima dele neste caso.
+1. Baixar o Arduino IDE do site oficial (siga intuitivamente). Após baixá-lo, execute-o. Aparecerá uma janela, na qual você deverá seguir este caminho: file/arquivo (Português)-> Preferences; uma nova janela se abrirá; nela você deve clicar em "Additional boards manager URLs:", o que fará com que se abra um espaço para você preencher; neste espaço, você colará o seguinte link: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package\_esp32\_index.json💡**OBSERVAÇÃO**: caso já exista algo escrito neste espaço, coloque uma vírgula ao seu final e cole logo após esta vírgula o link aqui mencionado; em seguida, click em OK. Na janela que permanecerá aberta, no Menu ao alto você clicará em "Tools", logo em seguida em Board, e em seguida Boards Manager; abrirá um Menu lateral, à esquerda, no qual você deverá usar o campo de busca digitando "ESP32"; vão aparecer alguns itens e você deverá clique em "Install" no pacote chamado "esp32 by Espressif Systems". Aguarde a instalação. Uma vez instalado o programa, volte em "Tools", vá em Board e localize o item ESP32, passando o mouse por cima, de modo que aparecerão inúmeros modelos. Identifique o seu e clique em cima, para selecioná-la e preparar o IDE para que o upload do código seja devidamente realizado em sua ESP32.💡 **OBSERVAÇÃO**: se você não identificar o seu modelo, saiba que a maioria das ESP32 funciona com "ESP32 Dev Module", clique em cima dele neste caso.
 2. Criação do *BotFather* no *Telegram*. Abra o Telegram e busque por @BotFather com selo de verificado (possui mais de 3.487.000 usuários), que é o Bot oficial para criaçáo de novos Bots no Telegram. Inicie uma conversa com *BotFather* digitando "/start", enviando esta mensagem. Aparecerá uma lista de comandos, e você deverá clicar sobre "/newbot"; em seguida, o *BotFather* perguntará qual o nome do seu *Bot* e você deve informá-lo, seguindo os demais passos requeridos pelo *Telegram/BotFather*, o qual criará um link na conversa.💡💡💡 **IMPORTANTE**: você deve guardar o Token de acesso ao API, pois você precisará dele para colar no código da ESP32 a fim de possibilitar o envio de mensagens para você. Clique no link da Conversa apresentado ao final. Após isto, você deverá voltar ao *Telegram* e buscar por "@UserInfotoBot", clicando nele e iniciando uma conversa que lhe dará sua ID, a qual também será usada no upload do Código Fonte para ESP32.
 3. No mesmo PC que realizou as tarefas acima, conecte a sua ESP32 via cabo USB. Volte à janela que permaneceu aberta após a seleção do Modelo ESP32, indo novamente a "Tools", "Port" e selecione a porta USB que apareceu (exemplo: COM3, COM5); caso não apareça, pode ser necessário instalar um driver usb (geralmente TH340 ou CP2102). Feito isto, vá ao GitHub para obter o Código Fonte deste projeto, o qual foi disponibilizado juntamente com o artigo que o sustenta. O link é: https://github.com/Bernardo-Andres/Sistema\_alarme\_intrusao. Você deve clicar "main.cpp|", e, ao fazer isto, o código se abrirá, devendo você copiá-lo integralmente e colá-lo no Arduino IDE. Substitua as credenciais indicadas no Código Fonte pelas suas: nome do Wi-Fi, senha do Wi-Fi, seu Token e seu ID do chat do Telegram. Em seguida, clique no botão de upload (setinha para direita).💡**OBSERVAÇÃO**: caso dê erro no upload, clicar novamente em upload e segurar o botão de Boot físico da ESP32 (aí dará tudo certo).
 4. Fixação do Microcontrolador ESP32 nos barramentos centrais da Protoboard (Plug and Play), por simples encaixe e pressão, o mais à direita possível (ocupando as colunas "b" a "j"), tendo cuidado de deixar livres a linha "a" e os barramentos laterais, positivo (+)/vermelho e negativo (-)/azul de ambos os lados.💡**OBSERVAÇÃO**: conectar o Microcontrolador ESP32 (identificar "V5" ou "5V") por meio de um pequeno pedaço de fio ao barramento positivo da Protoboard; da mesma forma, conectá-lo (identificar GND) no barramento negativo.
